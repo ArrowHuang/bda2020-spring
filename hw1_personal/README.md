@@ -11,3 +11,4 @@ Quick start:
 python hw1.py -p hw1_table.xlsx -k 10 -t all  
 python hw1.py -p hw1_table.xlsx -k 20 -t industry  
 python hw1.py -p hw1_table.xlsx -k 30 -t honghai  
+python hw1.py -h/--help
