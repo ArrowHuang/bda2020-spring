@@ -1,7 +1,7 @@
 # First Personal Homework
-Task : Extract keywords from Bigram and Trigram in news text corpus
-Approaches used as below:
-1.TF-IDF
-2.TF-IDF + MI
-3.TF-IDF + Chi-squared 
-4.TF-IDF + Lift
+##**Task : Extract keywords from Bigram and Trigram in news text corpus** <br>
+Approaches used as below: <br>
+1.TF-IDF <br>
+2.TF-IDF + MI <br>
+3.TF-IDF + Chi-squared <br>
+4.TF-IDF + Lift <br>
