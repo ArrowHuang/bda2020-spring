@@ -6,3 +6,8 @@ Approaches used as below:
 2.TF-IDF + MI  
 3.TF-IDF + Chi-squared  
 4.TF-IDF + Lift  
+  
+Quick start:  
+python hw1.py -p hw1_table.xlsx -k 10 -t all  
+python hw1.py -p hw1_table.xlsx -k 20 -t industry  
+python hw1.py -p hw1_table.xlsx -k 30 -t honghai  
