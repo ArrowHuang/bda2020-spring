@@ -33,10 +33,10 @@ def keyword_judge(txt_data):
 
 def add_title(worksheet_tmp,bold):
     worksheet_tmp.write('A1',U'編號',bold) 
-    worksheet_tmp.write('A2',U'類別',bold) 
-    worksheet_tmp.write('A3',U'時間',bold) 
-    worksheet_tmp.write('A4',U'標題',bold) 
-    worksheet_tmp.write('A4',U'內容',bold)
+    worksheet_tmp.write('B1',U'類別',bold) 
+    worksheet_tmp.write('C1',U'時間',bold) 
+    worksheet_tmp.write('D1',U'標題',bold) 
+    worksheet_tmp.write('E1',U'內容',bold)
     return worksheet_tmp
 
 def article_classification(filepath):
