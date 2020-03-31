@@ -2,6 +2,7 @@
 import pandas as pd
 import numpy as np
 import argparse
+from ngram import generate_ngram
 from classification import article_classification
 from LDA.lda import LDA_preprocess
 from TextRank.textrank import TextRankAlgo
@@ -9,10 +10,10 @@ from Word2Vec.w2v import word2vec
 
 
 parser = argparse.ArgumentParser(allow_abbrev=False)
-parser.add_argument('-input','-i',type=path,default=None,help="Please enter the path of input file")
-parser.add_argument('-output','-o',type=path,default=None,help="Please enter the path of output file")
-parser.add_argument('-stop','-s',type=path,default=None,help="Please enter the path of stopword file")
-parser.add_argument('-type','-t',type=str,default='all',help="Please choose the keyword extraction method (LDA, W2V, TR or TFIDF)")
+parser.add_argument('-input','-i',type=str,default='hw1_text.xlsx',help="Please enter the path of input file")
+parser.add_argument('-output','-o',type=str,default=None,help="Please enter the path of output file")
+parser.add_argument('-stop','-s',type=str,default='stopWord.txt',help="Please enter the path of stopword file")
+parser.add_argument('-type','-t',type=str,default=None,help="Please choose the keyword extraction method (LDA, W2V, TR or TFIDF)")
 args = parser.parse_args()
 
 
@@ -22,17 +23,21 @@ def LDA_keywords(filepath,outputpath,stopwordspath):
 
 
 # 利用TextRank提取關鍵詞
-def TextRank_keywords(filepath,outputpath)
+def TextRank_keywords(filepath,outputpath):
     TextRankAlgo(filepath,outputpath)
 
 
 # 利用Word2Vec提取關鍵詞
-def Word2Vec_keywords(filepath,outputpath,stopwordspath)
+def Word2Vec_keywords(filepath,outputpath,stopwordspath):
     word2vec(filepath,outputpath,stopwordspath)
 
 
+# 利用TF-IDF提取關鍵詞
+
+
+
 if __name__ == "__main__":
-     if(args.type == 'LDA'):
+    if(args.type == 'LDA'):
         article_classification(args.input) 
         LDA_keywords('Topics.xlsx',args.output,args.stop)   
 
@@ -46,5 +51,6 @@ if __name__ == "__main__":
 
     elif(args.type == 'TFIDF'):
         article_classification(args.input) 
+        # generate_ngram('Topics.xlsx',args.stop)
         TFIDF_keywords(args.path,args.key)   
    
