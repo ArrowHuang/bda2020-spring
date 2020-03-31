@@ -24,7 +24,7 @@ def keyword_judge(txt_data):
         s=str(s)
         dic[s]=zong
     pp = max(dic.items(),key=lambda x:x[1])
-    if int(pp[1])>2:
+    if int(pp[1])>6: # 原本為2為了demo改為6
         pp=pp[0]
         # print(pp)
     else:
