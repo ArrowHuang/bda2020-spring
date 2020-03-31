@@ -7,6 +7,7 @@ from classification import article_classification
 from LDA.lda import LDA_preprocess
 from TextRank.textrank import TextRankAlgo
 from Word2Vec.w2v import word2vec
+from TFDF.tfidf import TFIDF_algo
 
 
 parser = argparse.ArgumentParser(allow_abbrev=False)
@@ -14,6 +15,7 @@ parser.add_argument('-input','-i',type=str,default='hw1_text.xlsx',help="Please 
 parser.add_argument('-output','-o',type=str,default=None,help="Please enter the path of output file")
 parser.add_argument('-stop','-s',type=str,default='stopWord.txt',help="Please enter the path of stopword file")
 parser.add_argument('-type','-t',type=str,default=None,help="Please choose the keyword extraction method (LDA, W2V, TR or TFIDF)")
+parser.add_argument('-num','-n',type=int,default=0,help="Please choose the TF-IDF type (0:TF-IDF | 1:TF-IDF+MI | 2:TF-IDF+Chi )")
 args = parser.parse_args()
 
 
@@ -33,7 +35,8 @@ def Word2Vec_keywords(filepath,outputpath,stopwordspath):
 
 
 # 利用TF-IDF提取關鍵詞
-
+def TFIDF_keywords(filepath,outputpath,num):
+    TFIDF_algo(filepath,outputpath,num)
 
 
 if __name__ == "__main__":
@@ -52,5 +55,5 @@ if __name__ == "__main__":
     elif(args.type == 'TFIDF'):
         article_classification(args.input) 
         # generate_ngram('Topics.xlsx',args.stop)
-        TFIDF_keywords(args.path,args.key)   
+        TFIDF_keywords('ngram_all.xlsx',args.output,args.num)   
    
