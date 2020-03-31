@@ -82,7 +82,7 @@ def LDA_model(words_list):
     corpus = [dictionary.doc2bow(words) for words in words_list]
  
     # LDA主題模型參數
-    lda_model = models.ldamodel.LdaModel(corpus=corpus, num_topics=1, id2word=dictionary, passes=1)
+    lda_model = models.ldamodel.LdaModel(corpus=corpus, num_topics=1, id2word=dictionary, passes=1) #passes原本10，為了demo改為1
     
     return lda_model
  
