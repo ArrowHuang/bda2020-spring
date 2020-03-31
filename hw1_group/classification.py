@@ -31,16 +31,37 @@ def keyword_judge(txt_data):
         pp=['無']
     return pp
 
+def add_title(worksheet_tmp,blod):
+    worksheet_tmp.write('A1',U'編號',bold) 
+    worksheet_tmp.write('A2',U'類別',bold) 
+    worksheet_tmp.write('A3',U'時間',bold) 
+    worksheet_tmp.write('A4',U'標題',bold) 
+    worksheet_tmp.write('A4',U'內容',bold)
+    return worksheet_tmp
 
 def article_classification(filepath):
     collections = pd.read_excel(filepath,index_col = 0)
     workbook = xlsxwriter.Workbook('Topics.xlsx')#创建一个excel文件
+    bold = workbook.add_format({'bold':True})
+    
     worksheet = workbook.add_worksheet(u'銀行')
+    worksheet = add_title(worksheet,blod)
+
     worksheet1 = workbook.add_worksheet(u'信用卡')
+    worksheet1 = add_title(worksheet1,blod)
+
     worksheet2 = workbook.add_worksheet(u'匯率')
+    worksheet2 = add_title(worksheet2,blod)
+
     worksheet3 = workbook.add_worksheet(u'台積電')
+    worksheet3 = add_title(worksheet3,blod)
+
     worksheet4 = workbook.add_worksheet(u'台灣')
+    worksheet4 = add_title(worksheet4,blod)
+
     worksheet5 = workbook.add_worksheet(u'日本')
+    worksheet5 = add_title(worksheet5,blod)
+    
     i=1
     x=0
     q1=q2=q3=q4=q5=q6=0
