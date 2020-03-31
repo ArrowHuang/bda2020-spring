@@ -31,7 +31,7 @@ def keyword_judge(txt_data):
         pp=['無']
     return pp
 
-def add_title(worksheet_tmp,blod):
+def add_title(worksheet_tmp,bold):
     worksheet_tmp.write('A1',U'編號',bold) 
     worksheet_tmp.write('A2',U'類別',bold) 
     worksheet_tmp.write('A3',U'時間',bold) 
@@ -45,22 +45,22 @@ def article_classification(filepath):
     bold = workbook.add_format({'bold':True})
     
     worksheet = workbook.add_worksheet(u'銀行')
-    worksheet = add_title(worksheet,blod)
+    worksheet = add_title(worksheet,bold)
 
     worksheet1 = workbook.add_worksheet(u'信用卡')
-    worksheet1 = add_title(worksheet1,blod)
+    worksheet1 = add_title(worksheet1,bold)
 
     worksheet2 = workbook.add_worksheet(u'匯率')
-    worksheet2 = add_title(worksheet2,blod)
+    worksheet2 = add_title(worksheet2,bold)
 
     worksheet3 = workbook.add_worksheet(u'台積電')
-    worksheet3 = add_title(worksheet3,blod)
+    worksheet3 = add_title(worksheet3,bold)
 
     worksheet4 = workbook.add_worksheet(u'台灣')
-    worksheet4 = add_title(worksheet4,blod)
+    worksheet4 = add_title(worksheet4,bold)
 
     worksheet5 = workbook.add_worksheet(u'日本')
-    worksheet5 = add_title(worksheet5,blod)
+    worksheet5 = add_title(worksheet5,bold)
     
     i=1
     x=0
