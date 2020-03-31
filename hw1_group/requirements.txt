@@ -1,0 +1,10 @@
+gensim
+numpy
+openpyxl
+pandas
+path
+pathlib2
+pathtools
+textrank4zh
+unicodecsv
+xlrd
