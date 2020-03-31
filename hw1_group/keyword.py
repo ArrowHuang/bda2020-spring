@@ -55,5 +55,5 @@ if __name__ == "__main__":
     elif(args.type == 'TFIDF'):
         article_classification(args.input) 
         # generate_ngram('Topics.xlsx',args.stop)
-        TFIDF_keywords('ngram_all.xlsx',args.output,args.num)   
+        TFIDF_keywords('TFDF/ngram_all.xlsx',args.output,args.num)   
    
