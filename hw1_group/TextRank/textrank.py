@@ -33,7 +33,7 @@ def compute_texttank(df , filepath):
         
         all_re =[]
         test_df = df[names]
-        text_all = concat_all(df= test_df)
+        text_all = concat_all(df= test_df[:5]) # 原本test_df為了demo改為test_df[:5]
         tr4w = TextRank4Keyword()
         tr4w.analyze(text=text_all, lower=True, window=6)
         for item in tr4w.get_keywords(num=100, word_min_len=2):
