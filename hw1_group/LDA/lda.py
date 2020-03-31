@@ -70,7 +70,7 @@ def LDA_preprocess(filepath,outputpath,swpath):
         output_keywords(words_list).to_excel(writer,sheet_name=type_list[i])
 
     writer.save()
-    print(time.time()-start)
+    # print(time.time()-start)
 
  
 # 生成LDA模型
@@ -82,7 +82,7 @@ def LDA_model(words_list):
     corpus = [dictionary.doc2bow(words) for words in words_list]
  
     # LDA主題模型參數
-    lda_model = models.ldamodel.LdaModel(corpus=corpus, num_topics=1, id2word=dictionary, passes=2)
+    lda_model = models.ldamodel.LdaModel(corpus=corpus, num_topics=1, id2word=dictionary, passes=1)
     
     return lda_model
  
