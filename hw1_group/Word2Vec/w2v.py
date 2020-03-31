@@ -56,7 +56,7 @@ def word2vec(filepath,resultpath,stopwordpath):
     stopWords = get_stopwords(stopwordpath)
     xls = pd.ExcelFile(filepath)
     result_path = resultpath
-    modelPath = 'models/'
+    modelPath = 'Word2Vec/models/'
     
     write = pd.ExcelWriter(result_path)
     for topic in xls.sheet_names:
