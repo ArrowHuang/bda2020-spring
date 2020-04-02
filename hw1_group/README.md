@@ -26,7 +26,7 @@ python3 keyword.py -o Word2Vec.xlsx -t W2V
 To get keywords through TF-IDF model, run the example:  
 
 ```
-python3 keyword.py -o TFIDF.xlsx -t TFIDF  
+python3 keyword.py -o TFIDF.xls -t TFIDF  
 ```  
 
 
