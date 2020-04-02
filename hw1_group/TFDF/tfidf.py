@@ -98,7 +98,7 @@ def order_chi(ti_list,ti_all_list): # 按卡方值排序
     return chi_list
 
 
-def TFIDF_Cal(inputpath,sheetname,method,writebook): # 最終結果 排序方法（0，1，2）tfidf排序=0,mi排序=1,chi排序=2
+def TFIDF_Cal(inputpath,outputpath,sheetname,method,writebook): # 最終結果 排序方法（0，1，2）tfidf排序=0,mi排序=1,chi排序=2
     # 設定輸出
     worksheet = writebook.add_sheet(sheetname)  #在打开的excel中添加一个sheet
     
@@ -168,7 +168,7 @@ def TFIDF_Cal(inputpath,sheetname,method,writebook): # 最終結果 排序方法
                 worksheet.write(num+1,0,chi_list[num][0])
                 worksheet.write(num+1,1,chi_list[num][1])
         
-    writebook.save('result.xls')  # 保存
+    writebook.save(outputpath)  # 保存
     return 
 
 
@@ -176,7 +176,7 @@ def TFIDF_algo(inputpath,outputpath,method):  # (排序方法)tfidf排序=0,mi�
     writebook = xlwt.Workbook(outputpath)  # 打开一个excel
     runlist = ['銀行','信用卡','匯率','台積電','台灣','日本']
     for runn in runlist:
-        TFIDF_Cal(inputpath,runn,method,writebook)
+        TFIDF_Cal(inputpath,outputpath,runn,method,writebook)
     return    
 
 
