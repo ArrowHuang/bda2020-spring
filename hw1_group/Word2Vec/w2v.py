@@ -1,5 +1,6 @@
 # coding: utf-8
 # from ckiptagger import data_utils,WS
+# data_utils.download_data_gdown("./")
 # ws = WS("./data")
 import pandas as pd
 import numpy as np

@@ -1,0 +1,5 @@
+numpy==1.17.3
+ckiptagger==0.1.0
+openpyxl==2.4.8
+gensim==3.8.1
+pandas==0.20.3
