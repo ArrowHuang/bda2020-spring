@@ -18,7 +18,7 @@ To get keywords through TextRank model, run the example:
 ```
 python3 keyword.py -o TextRank.xlsx -t TR  
 ```  
-To get keywords through Word2Vec model, run the example:  
+To get keywords through Word2Vec model(@Sixy1204), run the example:  
 
 ```
 python3 keyword.py -o Word2Vec.xlsx -t W2V  
