@@ -104,11 +104,11 @@ def SplitAndLabel(stock_path,companies, out_path, data_16, data_17, data_18, dat
                 # #輸出成csv檔案
                 df_label_positive = data_news[data_news['label'] == 1].reset_index(drop=True)
                 df_label_positive = df_label_positive[['post_time','title','content','label']]
-                df_label_positive.to_csv(out_path+str(company)+'_P.csv')
+                df_label_positive.to_csv(out_path+str(company_name)+'_P.csv')
 
                 df_label_negative = data_news[data_news['label'] == -1].reset_index(drop=True)
                 df_label_negative = df_label_negative[['post_time','title','content','label']]
-                df_label_negative.to_csv(out_path+str(company)+'_N.csv')
+                df_label_negative.to_csv(out_path+str(company_name)+'_N.csv')
                 print(len(df_label_positive),len(df_label_negative))
 
 
