@@ -5,6 +5,8 @@ import pandas as pd
 from Match_Stock_News import excel2csv,calStock
 from Split_Labeling_Data import SplitAndLabel
 from FastText import FastText_model
+from RandomForest import RandomForest_model
+from Xgboost import Xgboost_model
 
 stock_data_path = 'dataset/stock_data.xlsx'
 stopword_path = 'dataset/stopwords.txt'
@@ -20,6 +22,7 @@ model_save_path = 'model_result/'
 parser = argparse.ArgumentParser(allow_abbrev=False)
 parser.add_argument('-preprocess','-p',help="Choose to preprocess or not",action='store_true')
 parser.add_argument('-label','-l',help="Choose to filter and label or not",action='store_true')
+parser.add_argument('-regression','-r',help="Choose to test using regression or not",action='store_true')
 parser.add_argument('-type','-t',type=str,default='FT',help="Please choose the classification method (LDA, W2V, TR or TFIDF)")
 args = parser.parse_args()
 
@@ -51,9 +54,10 @@ def keyword_extraction():
 def classification(model_type):
     if(model_type=='FT'):
         FastText_model(model_save_path,label_save_path,stopword_path)
-
-#移動回歸測試
-
+    elif(model_type=='RF'):
+        RandomForest_model(model_save_path,label_save_path,stopword_path)
+    elif(model_type=='XG'):
+        Xgboost_model(model_save_path,label_save_path,stopword_path)
 
 if __name__ == '__main__':
     if(args.preprocess == True):
@@ -61,5 +65,7 @@ if __name__ == '__main__':
     if(args.label == True):
         filterAndlabel()
     classification(args.type)
+    if(args.regression == True):
+        Regression_Test()
     
             
