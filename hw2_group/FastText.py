@@ -2,6 +2,9 @@ import re,jieba,random,os
 import numpy as np 
 import pandas as pd 
 import fasttext
+import seaborn as sns
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score, recall_score, precision_score 
 import matplotlib.pyplot as plt
 
 #創建output檔案路徑
@@ -131,10 +134,39 @@ def FastText_model(model_path,label_path,stopword_path):
         #訓練FastText模型並進行預測
         dic = {'鴻海':0.49,'大立光':1.06,'台積電':0.4}
         clf = fasttext.train_supervised(path+'fasttext_train_data.txt',lr=dic[fname],dim=100,epoch=50)
-        clf.save_model(path+fname+"fasttext_model.bin")
-        result = clf.test(path+'fasttext_test_data.txt')
+        clf.save_model(path+"fasttext_model.bin")
 
-        P = result[1]
-        R = result[2]
-        F1_score = (2*P*R)/(P+R)
-        print('股票名稱:{}\nPrecision:{}\nRecall:{}\nF1-Score:{}'.format(fname,P,R,F1_score))
+        #畫Confusion Matrix
+        model = fasttext.load_model(path+"fasttext_model.bin")
+        y_true = []
+        y_pred = []
+        with open(path+'fasttext_test_data.txt','r') as f:
+            for line in f.readlines():
+                if(',' in line):
+                    label = 1 if line.strip().split(',')[0].strip()=='__label__P' else -1
+                    data = line.strip().split(',')[1].strip()
+                    data = 1 if model.predict(data.strip(),k=1)[0][0]=='__label__P' else -1
+                    y_true.append(label)
+                    y_pred.append(data)
+       
+        sns.set()
+        f,ax = plt.subplots(figsize=(8,4))
+        C = confusion_matrix(y_true,y_pred,labels=[-1,1])
+        Cp = sns.heatmap(C,annot = True,fmt='g',cmap='Purples',xticklabels=['-1','1'],yticklabels=['-1','1'])
+
+        ax.set_title('Confusion Matrix for fastText')
+        ax.set_xlabel('Predict')
+        ax.set_ylabel('Fact')
+        ax.set_ylim([0,2])
+
+        f.savefig(path+"CM.png")
+
+        #計算Precision Recall
+        print(fname)
+        print('Accuracy: {}'.format( accuracy_score(y_true,y_pred) ))
+        print('Precision: {}'.format( precision_score(y_true,y_pred,average='macro') ))
+        print('Recall: {}'.format( recall_score(y_true,y_pred,average='macro') ))        
+
+
+
+        
